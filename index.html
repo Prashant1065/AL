@@ -5,19 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alziya.in - Coming Soon</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <div class="container">
+    <!-- Logo -->
+    <div class="logo fade-in">
+      <img src="logo.png" alt="Alziya.in Logo">
+    </div>
+
+    <!-- Header -->
     <header class="fade-in">
       <h1>Welcome to <span>Alziya.in</span></h1>
       <p>Our website is under construction. Stay tuned for something amazing!</p>
     </header>
 
+    <!-- Countdown Timer -->
+    <div class="countdown scroll-animation">
+      <div class="timer">
+        <span id="days">00</span>
+        <span class="label">Days</span>
+      </div>
+      <div class="timer">
+        <span id="hours">00</span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="timer">
+        <span id="minutes">00</span>
+        <span class="label">Minutes</span>
+      </div>
+      <div class="timer">
+        <span id="seconds">00</span>
+        <span class="label">Seconds</span>
+      </div>
+    </div>
+
+    <!-- Contact Us Section -->
     <section class="contact-us scroll-animation">
       <h2>Contact Us</h2>
       <p>If you have any questions, feel free to reach out to us at:</p>
-      <a href="mailto:prashantmarkam1065@gmail.com" class="email-link">prashantmarkam1065@gmail.com</a>
+      <a href="mailto:prashantmarkam1065@gmail.com" class="email-link">
+        <i class="fas fa-envelope"></i> prashantmarkam1065@gmail.com
+      </a>
     </section>
+
+    <!-- Social Media Links -->
+    <div class="social-links scroll-animation">
+      <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+    </div>
   </div>
 
   <script src="script.js"></script>
