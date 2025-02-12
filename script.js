@@ -1,136 +1,49 @@
-/* General Styles */
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-  overflow: hidden;
-}
+// Countdown Timer
+const countdown = () => {
+  const targetDate = new Date('2024-01-01T00:00:00'); // Set your launch date here
+  const now = new Date();
+  const difference = targetDate - now;
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-/* Logo */
-.logo img {
-  width: 150px;
-  height: auto;
-  margin-bottom: 20px;
-}
+  document.getElementById('days').innerText = String(days).padStart(2, '0');
+  document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+  document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+  document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+};
 
-/* Header */
-header h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
+setInterval(countdown, 1000);
 
-header h1 span {
-  color: #ff6f61;
-}
+// Scroll Animation Trigger
+const scrollElements = document.querySelectorAll('.scroll-animation');
 
-header p {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
-}
+const elementInView = (el) => {
+  const elementTop = el.getBoundingClientRect().top;
+  return (
+    elementTop <= (window.innerHeight || document.documentElement.clientHeight)
+  );
+};
 
-/* Countdown Timer */
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 50px;
-}
+const displayScrollElement = (element) => {
+  element.classList.add('visible');
+};
 
-.timer {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  width: 100px;
-  text-align: center;
-}
+const handleScrollAnimation = () => {
+  scrollElements.forEach((el) => {
+    if (elementInView(el)) {
+      displayScrollElement(el);
+    }
+  });
+};
 
-.timer span {
-  display: block;
-  font-size: 2rem;
-  font-weight: bold;
-}
+window.addEventListener('scroll', () => {
+  handleScrollAnimation();
+});
 
-.timer .label {
-  font-size: 1rem;
-  color: #ccc;
-}
-
-/* Contact Us Section */
-.contact-us {
-  margin-top: 50px;
-}
-
-.contact-us h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.email-link {
-  color: #ff6f61;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.2rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.email-link:hover {
-  color: #ff3b2f;
-}
-
-/* Social Media Links */
-.social-links {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.social-icon {
-  color: #fff;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-.social-icon:hover {
-  color: #ff6f61;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.fade-in {
-  animation: fadeIn 2s ease-in-out;
-}
-
-.scroll-animation {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.scroll-animation.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+// Initialize scroll animations on page load
+document.addEventListener('DOMContentLoaded', () => {
+  handleScrollAnimation();
+});
